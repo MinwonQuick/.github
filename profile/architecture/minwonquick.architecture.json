@@ -14,8 +14,8 @@
       "label": "시민",
       "sublabel": "브라우저 · 휴대폰",
       "pos": [
-        60,
-        300
+        40,
+        171
       ],
       "size": [
         130,
@@ -28,8 +28,8 @@
       "label": "지도 타일",
       "sublabel": "OpenFreeMap · 지형",
       "pos": [
-        290,
-        128
+        270,
+        40
       ],
       "size": [
         180,
@@ -42,8 +42,8 @@
       "label": "웹 · PWA",
       "sublabel": "Next.js 15 · MinwonQuick-FE",
       "pos": [
-        290,
-        236
+        270,
+        170
       ],
       "size": [
         180,
@@ -56,8 +56,8 @@
       "label": "모바일 앱",
       "sublabel": "Expo 52 · MinwonQuick-App",
       "pos": [
-        290,
-        370
+        270,
+        304
       ],
       "size": [
         180,
@@ -70,8 +70,8 @@
       "label": "소셜 로그인",
       "sublabel": "Google · Kakao OAuth",
       "pos": [
-        590,
-        128
+        570,
+        40
       ],
       "size": [
         180,
@@ -84,12 +84,12 @@
       "label": "NestJS API",
       "sublabel": "REST · SSE · JWT",
       "pos": [
-        590,
-        300
+        570,
+        170
       ],
       "size": [
         180,
-        64
+        62
       ]
     },
     {
@@ -98,8 +98,8 @@
       "label": "알림 발송",
       "sublabel": "Web Push · FCM",
       "pos": [
-        870,
-        128
+        850,
+        40
       ],
       "size": [
         180,
@@ -112,8 +112,8 @@
       "label": "PostgreSQL",
       "sublabel": "Prisma 5 · 대기·통계·세션",
       "pos": [
-        590,
-        470
+        570,
+        320
       ],
       "size": [
         180,
@@ -127,7 +127,7 @@
       "sublabel": "평일 08~21시 · 2분 주기",
       "pos": [
         830,
-        470
+        320
       ],
       "size": [
         170,
@@ -141,7 +141,7 @@
       "sublabel": "행정안전부 cso_v2",
       "pos": [
         1080,
-        470
+        320
       ],
       "size": [
         130,
