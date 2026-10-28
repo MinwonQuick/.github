@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "MinwonQuick 시스템 아키텍처",
+    "output": "minwonquick-architecture.html",
+    "locale": "ko",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    {
+      "id": "users",
+      "type": "external",
+      "label": "시민",
+      "sublabel": "브라우저 · 휴대폰",
+      "pos": [
+        60,
+        300
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "tiles",
+      "type": "cloud",
+      "label": "지도 타일",
+      "sublabel": "OpenFreeMap · 지형",
+      "pos": [
+        290,
+        128
+      ],
+      "size": [
+        180,
+        54
+      ]
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "웹 · PWA",
+      "sublabel": "Next.js 15 · MinwonQuick-FE",
+      "pos": [
+        290,
+        236
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "app",
+      "type": "frontend",
+      "label": "모바일 앱",
+      "sublabel": "Expo 52 · MinwonQuick-App",
+      "pos": [
+        290,
+        370
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "oauth",
+      "type": "security",
+      "label": "소셜 로그인",
+      "sublabel": "Google · Kakao OAuth",
+      "pos": [
+        590,
+        128
+      ],
+      "size": [
+        180,
+        54
+      ]
+    },
+    {
+      "id": "api",
+      "type": "backend",
+      "label": "NestJS API",
+      "sublabel": "REST · SSE · JWT",
+      "pos": [
+        590,
+        300
+      ],
+      "size": [
+        180,
+        64
+      ]
+    },
+    {
+      "id": "push",
+      "type": "cloud",
+      "label": "알림 발송",
+      "sublabel": "Web Push · FCM",
+      "pos": [
+        870,
+        128
+      ],
+      "size": [
+        180,
+        54
+      ]
+    },
+    {
+      "id": "db",
+      "type": "database",
+      "label": "PostgreSQL",
+      "sublabel": "Prisma 5 · 대기·통계·세션",
+      "pos": [
+        590,
+        470
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "ingest",
+      "type": "backend",
+      "label": "실시간 수집기",
+      "sublabel": "평일 08~21시 · 2분 주기",
+      "pos": [
+        830,
+        470
+      ],
+      "size": [
+        170,
+        62
+      ]
+    },
+    {
+      "id": "cso",
+      "type": "external",
+      "label": "공공데이터포털",
+      "sublabel": "행정안전부 cso_v2",
+      "pos": [
+        1080,
+        470
+      ],
+      "size": [
+        130,
+        62
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "클라이언트",
+      "wraps": [
+        "web",
+        "app"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "MinwonQuick 서버 · NestJS 10",
+      "wraps": [
+        "api",
+        "db",
+        "ingest"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "users-web",
+      "from": "users",
+      "to": "web",
+      "label": "HTTPS",
+      "variant": "emphasis"
+    },
+    {
+      "id": "users-app",
+      "from": "users",
+      "to": "app",
+      "variant": "emphasis"
+    },
+    {
+      "id": "web-api",
+      "from": "web",
+      "to": "api",
+      "label": "REST · SSE",
+      "variant": "emphasis"
+    },
+    {
+      "id": "app-api",
+      "from": "app",
+      "to": "api",
+      "label": "REST"
+    },
+    {
+      "id": "web-tiles",
+      "from": "web",
+      "to": "tiles",
+      "label": "3D 지도",
+      "variant": "dashed"
+    },
+    {
+      "id": "api-oauth",
+      "from": "api",
+      "to": "oauth",
+      "label": "토큰 검증",
+      "variant": "security"
+    },
+    {
+      "id": "api-push",
+      "from": "api",
+      "to": "push",
+      "label": "대기 알림",
+      "variant": "dashed"
+    },
+    {
+      "id": "api-db",
+      "from": "api",
+      "to": "db",
+      "label": "Prisma"
+    },
+    {
+      "id": "ingest-db",
+      "from": "ingest",
+      "to": "db",
+      "label": "저장"
+    },
+    {
+      "id": "ingest-cso",
+      "from": "ingest",
+      "to": "cso",
+      "label": "2분 주기",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "실시간 데이터",
+      "items": [
+        "행정안전부 「민원실 이용 현황 실시간 정보」(발권기 번호표)",
+        "평일 08~21시 2분 주기 수집 · 일일 호출 예산",
+        "기준시각 10분 초과 '지연', 60분 초과·날짜 변경 시 미표시",
+        "15분 스냅샷 → 오늘 추이·시간대·요일별 통계"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "클라이언트",
+      "items": [
+        "웹: Next.js 15 PWA · three.js · MapLibre 3D 지도",
+        "앱: Expo 52 · React Native",
+        "기관 상세는 SSE 공유 스트림으로 실시간 갱신",
+        "예상 대기시간은 호출 속도 기반 추정치로 표시"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "보안·개인정보",
+      "items": [
+        "JWT + refresh 세션 회전 · 재사용 탐지",
+        "소셜 로그인은 검증된 이메일만, 계정 자동 연결 금지",
+        "관리자 접속기록 해시 체인 보관",
+        "위치 미저장 · 공개 후기 작성자 이름 가림"
+      ]
+    }
+  ]
+}
