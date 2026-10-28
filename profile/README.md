@@ -26,6 +26,19 @@
 
 > 2026년 10월 기준으로 공식 실시간 데이터를 제공하는 민원실은 전국 44곳입니다. 데이터가 없는 기관은 숫자 대신 '실시간 정보 미제공'으로 표시합니다.
 
+## 아키텍처
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/architecture-dark.svg">
+  <img src="./assets/architecture-light.svg" alt="MinwonQuick 시스템 아키텍처: 시민이 웹·앱으로 NestJS API에 접속하고, API는 PostgreSQL에 저장된 대기 정보를 REST·SSE로 내려준다. 실시간 수집기는 평일 08~21시 2분마다 공공데이터포털(행정안전부 cso_v2)에서 민원실 대기 정보를 받아 저장한다." width="100%">
+</picture>
+
+- **주요 경로** — 시민 → 웹·앱 → NestJS API(REST · SSE) → PostgreSQL
+- **실시간 수집** — 수집기가 평일 08~21시에 2분마다 공공데이터포털에서 민원실·업무별 대기 정보를 받아 저장하고, 15분 단위 스냅샷으로 통계를 만듭니다.
+- **실시간 갱신** — 기관 상세 화면은 기관별 공유 SSE 스트림으로 새로고침 없이 바뀝니다.
+
+<sub>다이어그램은 [archify](https://github.com/tt-a1i/archify) Architecture 형식으로 작성했습니다. 원본: [`architecture/minwonquick.architecture.json`](./architecture/minwonquick.architecture.json)</sub>
+
 ## 서비스 구성
 
 | 구성 | 기술 |
