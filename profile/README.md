@@ -37,7 +37,7 @@
 - **실시간 수집** — 수집기가 평일 08~21시에 2분마다 공공데이터포털에서 민원실·업무별 대기 정보를 받아 저장하고, 15분 단위 스냅샷으로 통계를 만듭니다.
 - **실시간 갱신** — 기관 상세 화면은 기관별 공유 SSE 스트림으로 새로고침 없이 바뀝니다.
 
-<sub>다이어그램은 [archify](https://github.com/tt-a1i/archify) Architecture 형식으로 작성했습니다. 원본: [`architecture/minwonquick.architecture.json`](./architecture/minwonquick.architecture.json)</sub>
+<sub>다이어그램은 [archify](https://github.com/tt-a1i/archify) v3.2.0으로 만들었습니다(검증·생성·브라우저 검사 통과). 노드를 눌러 보고 경로를 따라가 볼 수 있는 대화형 버전은 [HTML 내려받기](https://github.com/MinwonQuick/.github/raw/main/profile/architecture/minwonquick-architecture.html) · 원본 [`minwonquick.architecture.json`](./architecture/minwonquick.architecture.json)</sub>
 
 ## 서비스 구성
 
